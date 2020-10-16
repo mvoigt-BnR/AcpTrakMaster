@@ -1,0 +1,13 @@
+as/
+Binaries/
+Diagnosis/
+Temp/
+*.isopen
+*.tar.gz
+Logical/Scene/BundlingData.dat
+Logical/Scene/SmallCollisionAvoidanceTestTrace.dat
+Logical/Scene/805ppmTrace.dat
+Logical/Scene/805ppmTrace2.dat
+Logical/Scene/805ppmTrace3.dat
+*.zip
+Demo Sync with Helix Movement.mp4
