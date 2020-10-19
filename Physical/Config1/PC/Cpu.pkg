@@ -19,8 +19,9 @@
   </Objects>
   <Configuration ModuleId="PC_any">
     <AutomationRuntime Version="C4.72" />
-    <Build GccVersion="4.1.2" />
+    <Build GccVersion="6.3.0" PreBuildStep="powershell -ExecutionPolicy ByPass -File $(WIN32_AS_PROJECT_PATH)\Logical\Source\Support\Version\Version.ps1 $(WIN32_AS_PROJECT_PATH) $(AS_CONFIGURATION)" />
     <DefaultTargetMemory Tasks="UserROM" />
+    <Safety SafetyRelease="0.0" />
     <Vc FirmwareVersion="V4.72.0" />
   </Configuration>
 </Cpu>

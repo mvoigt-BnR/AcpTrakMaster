@@ -1,0 +1,9 @@
+VAR
+	axis : McAxisType;
+	asmPowerOn : MC_BR_AsmPowerOn_AcpTrak;
+	state : USINT;
+	secAddShuttle : MC_BR_SecAddShuttle_AcpTrak;
+	routedMoveVel : MC_BR_RoutedMoveVel_AcpTrak;
+	secGetShuttle : MC_BR_SecGetShuttle_AcpTrak;
+	start : BOOL;
+END_VAR

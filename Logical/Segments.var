@@ -1,0 +1,19 @@
+VAR
+	gSegMain_1 : McSegmentType;
+	gSegMain_2 : McSegmentType;
+	gSegMain_3 : McSegmentType;
+	gSegMain_4 : McSegmentType;
+	gSegMain_5 : McSegmentType;
+	gSegMain_6 : McSegmentType;
+	gSegMain_7 : McSegmentType;
+	gSegMain_8 : McSegmentType;
+	gSegMain_9 : McSegmentType;
+	gSegMain_10 : McSegmentType;
+	gSegMain_11 : McSegmentType;
+	gSegMain_12 : McSegmentType;
+	gSegMain_13 : McSegmentType;
+	gSegMain_14 : McSegmentType;
+	gSegMain_15 : McSegmentType;
+	gSegMain_16 : McSegmentType;
+	gSegMain_17 : McSegmentType;
+END_VAR

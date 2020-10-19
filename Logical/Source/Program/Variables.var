@@ -1,0 +1,7 @@
+VAR
+	idx : USINT;
+	tmp : STRING[80];
+	testEnable : BOOL;
+	svgTransform : STRING[3000];
+	svgContent : STRING[3000];
+END_VAR

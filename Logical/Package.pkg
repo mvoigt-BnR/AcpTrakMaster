@@ -4,6 +4,10 @@
   <Objects>
     <Object Type="File" Description="Global data types">Global.typ</Object>
     <Object Type="File" Description="Global variables">Global.var</Object>
+    <Object Type="File" Description="Global variables">Segments.var</Object>
     <Object Type="Package" Description="Global libraries">Libraries</Object>
+    <Object Type="Package">mappView</Object>
+    <Object Type="Package">Source</Object>
+    <Object Type="Package">SceneViewer</Object>
   </Objects>
 </Package>
