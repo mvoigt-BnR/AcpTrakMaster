@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <BR.AS.HardwareTopology Version="0.0.0.1">
   <TimeStamps>
-    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="10/16/2020 17:03:15" />
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="10/19/2020 21:36:35" />
   </TimeStamps>
   <Modules>
     <Module Name="PC" Type="PC_any" X="100" Y="100" />
     <Module Name="5LS182.6-2" Type="5LS182.6-2" X="418" Y="110" />
     <Module Name="gSegMain_1" Type="8YF1I01.AA66.00-1" X="463" Y="399" />
-    <Module Name="gSegMain_10" Type="8YF1I01.AA66.00-1" X="2582.59985" Y="399" />
-    <Module Name="gSegMain_11" Type="8YF1I01.AA66.00-1" X="2895.7998" Y="399" />
-    <Module Name="gSegMain_12" Type="8YF1I01.AA66.00-1" X="3208.99976" Y="399" />
-    <Module Name="gSegMain_13" Type="8YF1I01.AA66.00-1" X="3522.19971" Y="399" />
-    <Module Name="gSegMain_14" Type="8YF1I01.AB2B.00-1" X="3835.39966" Y="399" />
-    <Module Name="gSegMain_15" Type="8YF1I01.BB4B.00-1" X="4064.19971" Y="399" />
-    <Module Name="gSegMain_16" Type="8YF1I01.BB4B.00-1" X="4200.59961" Y="399" />
-    <Module Name="gSegMain_17" Type="8YF1I01.BB4B.00-1" X="4336.99951" Y="399" />
-    <Module Name="gSegMain_18" Type="8YF1I01.BA2B.00-1" X="4473.39941" Y="399" />
-    <Module Name="gSegMain_2" Type="8YF1I01.AA66.00-1" X="776.2" Y="399" />
-    <Module Name="gSegMain_3" Type="8YF1I01.AA66.00-1" X="1089.4" Y="399" />
-    <Module Name="gSegMain_4" Type="8YF1I01.AA66.00-1" X="1402.6001" Y="399" />
-    <Module Name="gSegMain_5" Type="8YF1I01.AB2B.00-1" X="1715.8" Y="399" />
-    <Module Name="gSegMain_6" Type="8YF1I01.BB4B.00-1" X="1944.6001" Y="399" />
+    <Module Name="gSegMain_10" Type="8YF1I01.AA66.00-1" X="2582" Y="399" />
+    <Module Name="gSegMain_11" Type="8YF1I01.AA66.00-1" X="2895" Y="399" />
+    <Module Name="gSegMain_12" Type="8YF1I01.AA66.00-1" X="3208" Y="399" />
+    <Module Name="gSegMain_13" Type="8YF1I01.AA66.00-1" X="3522" Y="399" />
+    <Module Name="gSegMain_14" Type="8YF1I01.AB2B.00-1" X="3835" Y="399" />
+    <Module Name="gSegMain_15" Type="8YF1I01.BB4B.00-1" X="4064" Y="399" />
+    <Module Name="gSegMain_16" Type="8YF1I01.BB4B.00-1" X="4200" Y="399" />
+    <Module Name="gSegMain_17" Type="8YF1I01.BB4B.00-1" X="4336" Y="399" />
+    <Module Name="gSegMain_18" Type="8YF1I01.BA2B.00-1" X="4473" Y="399" />
+    <Module Name="gSegMain_2" Type="8YF1I01.AA66.00-1" X="776" Y="399" />
+    <Module Name="gSegMain_3" Type="8YF1I01.AA66.00-1" X="1089" Y="399" />
+    <Module Name="gSegMain_4" Type="8YF1I01.AA66.00-1" X="1402" Y="399" />
+    <Module Name="gSegMain_5" Type="8YF1I01.AB2B.00-1" X="1715" Y="399" />
+    <Module Name="gSegMain_6" Type="8YF1I01.BB4B.00-1" X="1944" Y="399" />
     <Module Name="gSegMain_7" Type="8YF1I01.BB4B.00-1" X="2081" Y="399" />
-    <Module Name="gSegMain_8" Type="8YF1I01.BB4B.00-1" X="2217.4" Y="399" />
-    <Module Name="gSegMain_9" Type="8YF1I01.BA2B.00-1" X="2353.7998" Y="399" />
+    <Module Name="gSegMain_8" Type="8YF1I01.BB4B.00-1" X="2217" Y="399" />
+    <Module Name="gSegMain_9" Type="8YF1I01.BA2B.00-1" X="2353" Y="399" />
   </Modules>
   <Links>
     <Link From="5LS182.6-2" To="gSegMain_1" FromPort="IF1" ToPort="PLK1" IsRoutedByUser="False">
