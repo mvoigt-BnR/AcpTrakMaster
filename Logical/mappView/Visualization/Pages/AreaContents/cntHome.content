@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="cntHome" height="900" width="1450" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
-    <Widget xsi:type="widgets.brease.Paper" id="Paper1" top="20" left="160" width="1302" height="860" zIndex="0" svgFilePath="Media/gMcAssembly01.svg" />
+    <Widget xsi:type="widgets.brease.Paper" id="Paper1" top="20" left="200" width="1260" height="860" zIndex="0" svgFilePath="Media/gMcAssembly01.svg" transitionTime="100" />
     <Widget xsi:type="widgets.brease.TextInput" id="TextInput1" top="40" left="0" width="140" height="240" zIndex="1" />
-    <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput1" top="360" left="0" width="140" height="520" zIndex="2" multiLine="true" wordWrap="true" textAlign="left top" />
+    <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput1" top="360" left="0" width="200" height="520" zIndex="2" multiLine="true" wordWrap="true" textAlign="left top" />
   </Widgets>
 </Content>

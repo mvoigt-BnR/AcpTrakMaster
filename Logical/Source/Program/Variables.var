@@ -1,7 +1,9 @@
 VAR
+	val : INT;
 	idx : USINT;
-	tmp : STRING[80];
+	tmp : STRING[150];
 	testEnable : BOOL;
 	svgTransform : STRING[3000];
 	svgContent : STRING[3000];
+	tstString : STRING[80];
 END_VAR

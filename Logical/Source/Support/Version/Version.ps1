@@ -4,14 +4,15 @@
 $taskDir = $args[0] + "\Logical\Source\Support\MachineInfo";
 $variableFile = $taskDir + "\Variables.var";
 $versionVar = "MachineSoftwareVersion";
+$branchVar = "MachineSoftwareBranch";
 $dateVar = "MachineLastRevisionDate";
 
-Write-Host $args
-Write-Host Test
 # Get version info from Git. example 1.2.3-45-g6789abc
 $gitVersion = git -C $args[0] describe --long --always --match "[0-9]*";
 
 $gitRev = [regex]::Match($gitVersion, "(.*)-(\d+)-[g](\w+)")
+
+$gitBranch = git -C $args[0] branch;
 
 if (-Not $gitRev.Success){
 	"Git command not found or version not in recognizable format";
@@ -23,15 +24,13 @@ $gitCount = $gitRev.Groups[2].Value;
 $gitSHA1 = $gitRev.Groups[3].Value;
 
 $existingContent = Get-Content ($variableFile);
-Write-Host $existingContent
 $currentVersion = [regex]::Match($existingContent, "$versionVar\s*:\s*STRING\[80]\s*:=\s*'.*';");
 
 #make sure that a version number is set
 If ($currentVersion.Success) {
-	$newMainTask = $existingContent | %{$_ -replace [Regex]::Escape($currentVersion.Value), ("$versionVar : STRING[80] := '$gitTag-$gitCount-$gitSHA1';") };
+	$newMainTask = $existingContent | %{$_ -replace [Regex]::Escape($currentVersion.Value), ("$versionVar : STRING[80] := '$gitBranch-$gitTag-$gitCount-$gitSHA1';") };
 	$newMainTask | Out-File -FilePath ($variableFile) -Encoding ascii;
 }
-
 
 $existingContent = Get-Content ($variableFile);
 $currentDate = [regex]::Match($existingContent, "$dateVar\s*:\s*DATE_AND_TIME\s*:=\s*DT#[\d\-:]*;");

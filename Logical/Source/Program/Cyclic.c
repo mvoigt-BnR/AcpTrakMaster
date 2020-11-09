@@ -5,7 +5,7 @@
  *********************************************************************************/ 
 
 #include <bur/plctypes.h>
-
+	
 #ifdef _DEFAULT_INCLUDES
 #include <AsDefault.h>
 #endif
@@ -19,28 +19,34 @@ void _CYCLIC ProgramCyclic(void)
 	if(testEnable){
 		//Reset the entire SVG additional content
 		brsmemset(&svgContent,0,sizeof(svgContent));
+		brsmemset(&svgTransform,0,sizeof(svgTransform));
 		
-		brsstrcat(&svgContent,&"<svg viewBox=\"-0.735577 -0.745 4.11115 1.52\">");
+		brsstrcat(&svgContent,&"<svg viewBox=\"-3.37558 -0.745 4.11115 0.86\">");
 		for (idx = 0; idx < 9; idx++){
 			if(gShuttleMon.Shuttle[idx].Available){
-				brsstrcat(&svgContent,&"<rect x=\"");
-				brsftoa((REAL)-gShuttleMon.Shuttle[idx].Position.X / 1000.0,&tmp);
+				snprintf2(tmp,150,"<g id=\"Shuttle\">");
 				brsstrcat(&svgContent,&tmp);
-				brsstrcat(&svgContent,&"\" y=\"");
-				brsftoa((REAL)gShuttleMon.Shuttle[idx].Position.Y / 1000.0,&tmp);
+				snprintf2(tmp,150,"<rect id=\"box\" x=\"%f\" y=\"%f\" width=\"%0f\" height=\"%1f\" style=\"fill:rgb(0,255,0);\"/>",
+					-gShuttleMon.Shuttle[idx].ExtentToFront / 1000.0,
+					-gShuttleMon.Shuttle[idx].ExtentToFront / 1000.0,
+					(gShuttleMon.Shuttle[idx].ExtentToBack + gShuttleMon.Shuttle[idx].ExtentToFront)/ 1000.0,
+					gShuttleMon.Shuttle[idx].Width / 1000.0);
+				brsstrcat(&svgContent,&tmp);				
+				snprintf2(tmp,150,"<text x=\"%f\" y=\"%f\">Shuttle %d</text>",
+					-gShuttleMon.Shuttle[idx].ExtentToFront / 1000.0,
+					-gShuttleMon.Shuttle[idx].ExtentToFront / 1000.0,
+					gShuttleMon.Shuttle[idx].Index);
 				brsstrcat(&svgContent,&tmp);
-				brsstrcat(&svgContent,&"\" width=\"");
-				brsftoa((REAL)(gShuttleMon.Shuttle[idx].ExtentToBack + gShuttleMon.Shuttle[idx].ExtentToFront)/ 1000.0,&tmp);
-				brsstrcat(&svgContent,&tmp);
-				brsstrcat(&svgContent,&"\" height=\"");
-				brsftoa((REAL)gShuttleMon.Shuttle[idx].Width / 1000.0,&tmp);
-				brsstrcat(&svgContent,&tmp);
-				brsstrcat(&svgContent,&"\" style=\"fill:rgb(0,255,0)\"/>");
+				brsstrcat(&svgContent,&"</g>");
+				
+				snprintf2(tmp,150,"[{\"select\":\"#Shuttle\",\"duration\":100,\"display\":true,\"translate\":[%f,%f]}]",
+					gShuttleMon.Shuttle[idx].Position.X / 1000.0,
+					-gShuttleMon.Shuttle[idx].Position.Y / 1000.0);
+				brsstrcat(&svgTransform,&tmp);
+				
 			}
 		}
 		brsstrcat(&svgContent,&"</svg>");
 	}
-		
-	
 }
 
