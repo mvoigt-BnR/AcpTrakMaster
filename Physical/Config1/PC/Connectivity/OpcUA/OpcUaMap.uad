@@ -11,6 +11,7 @@
       <Task Name="Program">
         <Variable Name="svgTransform" />
         <Variable Name="svgContent" />
+        <Variable Name="selectedId" />
       </Task>
     </Module>
   </DefaultView>

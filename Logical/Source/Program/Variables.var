@@ -6,4 +6,6 @@ VAR
 	svgTransform : STRING[3000];
 	svgContent : STRING[3000];
 	tstString : STRING[80];
+	selectedId : STRING[80];
+	Selected : BOOL;
 END_VAR

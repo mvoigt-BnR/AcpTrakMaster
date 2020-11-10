@@ -6,4 +6,5 @@ VAR
 	routedMoveVel : MC_BR_RoutedMoveVel_AcpTrak;
 	secGetShuttle : MC_BR_SecGetShuttle_AcpTrak;
 	start : BOOL;
+	SendCmd : BOOL;
 END_VAR

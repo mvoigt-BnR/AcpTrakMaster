@@ -9,4 +9,5 @@ void _INIT ProgramInit(void)
 {
 	brsmemset(&svgContent,0,sizeof(svgContent));
 	brsmemset(&svgTransform,0,sizeof(svgTransform));
+	brsmemset(&selectedId,0,sizeof(selectedId));
 }

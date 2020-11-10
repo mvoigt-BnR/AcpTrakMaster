@@ -37,7 +37,7 @@ void _CYCLIC ProgramCyclic(void)
 				routedMoveVel.Deceleration = 10;
 				routedMoveVel.Sector = &secMain;
 				routedMoveVel.Position = 0;
-				routedMoveVel.Execute = 1;
+				routedMoveVel.Execute = SendCmd;
 			
 				state = 30;
 			}

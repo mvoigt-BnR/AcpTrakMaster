@@ -11,7 +11,7 @@
     <BindingsSet refId="cntHome_binding" />
   </BindingsSets>
   <EventBindingsSets>
-    <!--<EventBindingsSet refId="" />-->
+    <EventBindingsSet refId="eventbinding_0" />
   </EventBindingsSets>
   <Dialogs>
     <!--<Dialog refId="" />-->
