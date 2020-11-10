@@ -1,11 +1,7 @@
 VAR
-	val : INT;
-	idx : USINT;
-	tmp : STRING[150];
-	testEnable : BOOL;
-	svgTransform : STRING[3000];
-	svgContent : STRING[3000];
-	tstString : STRING[80];
 	selectedId : STRING[80];
 	Selected : BOOL;
+	TrackMasterCore : tmCore;
+	ShControl : tmShuttleControl;
+	shPars : tmShuttleControlParsTyp;
 END_VAR

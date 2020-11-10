@@ -50,7 +50,7 @@
     <LibraryObject Name="asieccon" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="sys_lib" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="Library" Source="Source.Library.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <LibraryObject Name="TrkMst" Source="Libraries.TrkMst.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <LibraryObject Name="snprintf" Source="Libraries.snprintf.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="LoggingLib" Source="Libraries.LoggingLib.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="astime" Source="Libraries.astime.lby" Memory="UserROM" Language="binary" Debugging="true" />

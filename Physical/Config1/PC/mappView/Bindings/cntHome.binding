@@ -11,12 +11,14 @@
 <Source xsi:type="brease" contentRefId="cntHome" widgetRefId="Paper1" attribute="svgContent" />
 <Target xsi:type="brease" contentRefId="cntHome" widgetRefId="TextOutput1" attribute="value" />
 </Binding>
+
+
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Program:svgContent" attribute="value" samplingRate="fast" />
+<Source xsi:type="opcUa" refId="::Program:TrackMasterCore.SvgContent" attribute="value" samplingRate="fast" />
 <Target xsi:type="brease" contentRefId="cntHome" widgetRefId="Paper1" attribute="svgContent" />
 </Binding>
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Program:svgTransform" attribute="value" samplingRate="fast" />
+<Source xsi:type="opcUa" refId="::Program:TrackMasterCore.SvgTransform" attribute="value" samplingRate="fast" />
 <Target xsi:type="brease" contentRefId="cntHome" widgetRefId="Paper1" attribute="transform" />
 </Binding>
 </Bindings>

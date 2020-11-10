@@ -7,7 +7,8 @@
 
 void _INIT ProgramInit(void)
 {
-	brsmemset(&svgContent,0,sizeof(svgContent));
-	brsmemset(&svgTransform,0,sizeof(svgTransform));
 	brsmemset(&selectedId,0,sizeof(selectedId));
+	shPars.Accel = 10;
+	shPars.Decel = 10;
+	shPars.Vel = 10;
 }

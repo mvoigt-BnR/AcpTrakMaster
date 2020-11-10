@@ -9,9 +9,11 @@
   <DefaultView>
     <Module Name="&lt;Default&gt;">
       <Task Name="Program">
-        <Variable Name="svgTransform" />
-        <Variable Name="svgContent" />
         <Variable Name="selectedId" />
+        <Variable Name="TrackMasterCore">
+          <Variable Name="SvgContent" />
+          <Variable Name="SvgTransform" />
+        </Variable>
       </Task>
     </Module>
   </DefaultView>
