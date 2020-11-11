@@ -8,6 +8,12 @@ TYPE
 		Fbs : tmCoreFbTyps; (*Internal Function blocks*)
 		ShCount : USINT; (*Shuttle Count*)
 	END_STRUCT;
+	tmCoreViewBoxCfgTyp : 	STRUCT  (*Attributes of the SVG's viewbox*)
+		MinX : REAL; (*Minimum x position*)
+		MinY : REAL; (*minimum y position*)
+		Width : REAL; (*Width of viewbox*)
+		Height : REAL; (*Height of viewbox*)
+	END_STRUCT;
 	tmCoreStateEnum : 
 		( (*State of execution*)
 		tmCORE_OFF, (*Waiting for enable command*)

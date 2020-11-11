@@ -23,19 +23,29 @@ plcbit CheckStrLen(char* dest,char* source,UDINT length){
 }
 //This function loops through the assembly monitor data and builds a SVG string + SVG Transform. Will return 0 if succesful
 //Will monitor to make sure the string lengths are not exceeded
-DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* svgTransform){
+DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* svgTransform,struct tmCoreViewBoxCfgTyp* viewBox){
 	USINT i;
 	USINT transCounter;
 	transCounter = 0;
-	
+	char tmp[150];
 	brsmemset(svgContent,0,sizeof(svgContent));
 	brsmemset(svgTransform,0,sizeof(svgTransform));
 	
-	brsstrcat(svgContent,&"<svg viewBox=\"-3.37558 -0.745 4.11115 0.86\">");
+	snprintf2(tmp,150,"<svg viewBox=\"%f %f %f %f\">",
+		viewBox->MinX,
+		viewBox->MinY,
+		viewBox->Width,
+		viewBox->Height);
+	if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
+		brsstrcat(svgContent,&tmp);
+	}
+	else 
+		return tmCORE_ERR_STR_LEN_EXCEEDED;
 	brsstrcat(svgTransform,&"[");
+	
 	for (i = 0; i < tmMAX_SHUTTLE_COUNT; i++){
 		if(mon->Shuttle[i].Available){
-			char tmp[150];
+			brsmemset(&tmp,0,sizeof(tmp));
 		
 			LREAL width;
 			LREAL length;
@@ -196,7 +206,7 @@ void tmCore(struct tmCore* inst)
 			inst->Internal.State = tmCORE_GET_SH;
 			break;
 		case tmCORE_RUNNING:
-			inst->ErrorID = BuildStrings(inst->ShuttleMon,&inst->SvgContent,&inst->SvgTransform);
+			inst->ErrorID = BuildStrings(inst->ShuttleMon,&inst->SvgContent,&inst->SvgTransform,&inst->ViewBoxCfg);
 			inst->StrLengths.ContentLength = brdkStrLen(&inst->SvgContent);
 			inst->StrLengths.TransformLength = brdkStrLen(&inst->SvgTransform);
 			
@@ -212,7 +222,10 @@ void tmCore(struct tmCore* inst)
 			break;
 		case tmCORE_ERROR:
 			if(inst->ErrorRest){
+				inst->Error = FALSE;
+				inst->ErrorID = tmCORE_ERR_OK;
 				
+				inst->Internal.State = tmCORE_OFF;
 			}
 			break;
 	}

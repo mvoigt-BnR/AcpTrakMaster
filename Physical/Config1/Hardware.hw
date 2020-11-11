@@ -6,7 +6,7 @@
   </Module>
   <Module Name="PC" Type="PC_any" Version="1.1.0.0" OrderNumber="PC">
     <Parameter ID="ConfigurationID" Value="TrkMster_Config1" />
-    <Parameter ID="ConfigVersion" Value="0.1.1" />
+    <Parameter ID="ConfigVersion" Value="0.0.1" />
     <Parameter ID="ConfigVersion" Value="0.1" />
     <Parameter ID="ConfigVersion" Value="0.1" />
     <Parameter ID="ConfigVersion" Value="0.1" />

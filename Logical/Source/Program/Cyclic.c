@@ -22,8 +22,15 @@ void _CYCLIC ProgramCyclic(void)
 				TrackMasterCore.Assembly = &gAssembly_1;
 				TrackMasterCore.ShuttleMon = &gShuttleMon;
 				TrackMasterCore.Enable = 1;
+				
+				//Set parameters for View box (this comes from the automatically generated SVG)
+				TrackMasterCore.ViewBoxCfg.MinX = -3.37558;
+				TrackMasterCore.ViewBoxCfg.MinY = -0.745;
+				TrackMasterCore.ViewBoxCfg.Width = 4.11115;
+				TrackMasterCore.ViewBoxCfg.Height = 0.86;
 			
-			state = 10;
+			
+				state = 10;
 			}
 			break;
 		case 10:

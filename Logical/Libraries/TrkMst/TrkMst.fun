@@ -5,6 +5,7 @@ FUNCTION_BLOCK tmCore (*Core Track Master Function Block*)
 		ErrorRest : BOOL; (*Reset any present errors*)
 		Assembly : REFERENCE TO McAssemblyType; (*Assembly reference to monitor*)
 		ShuttleMon : REFERENCE TO McAcpTrakAssemblyMonData; (*Shuttle Monitor structure for the assembly*)
+		ViewBoxCfg : tmCoreViewBoxCfgTyp; (*View box configuration for the SVG*)
 	END_VAR
 	VAR_OUTPUT
 		Error : BOOL; (*Error present on FB*)
