@@ -22,5 +22,197 @@
         </Sequence>
       </EventHandler>
     </EventBinding>
+    <EventBinding id="ebCmdMoveAddPosX1">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddPosX1" event="MouseDown" />
+      <Operand datatype="ANY_REAL" name="dist">
+        <ReadTarget xsi:type="session.VariableAction.Read" refId="distValue">
+          <Method xsi:type="session.VariableAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*1" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_7">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddPosX1" event="MouseUp" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="ebCmdMoveAddPosX5">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddPosX5" event="MouseDown" />
+      <Operand datatype="ANY_REAL" name="dist">
+        <ReadTarget xsi:type="session.VariableAction.Read" refId="distValue">
+          <Method xsi:type="session.VariableAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*5" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_6">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddPosX5" event="MouseUp" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="ebCmdMoveAddPosX10">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddPosX10" event="MouseDown" />
+      <Operand datatype="ANY_REAL" name="dist">
+        <ReadTarget xsi:type="session.VariableAction.Read" refId="distValue">
+          <Method xsi:type="session.VariableAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*10" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_5">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddPosX10" event="MouseUp" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="ebCmdMoveAddNegX1">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddNegX1" event="MouseDown" />
+      <Operand datatype="ANY_REAL" name="dist">
+        <ReadTarget xsi:type="session.VariableAction.Read" refId="distValue">
+          <Method xsi:type="session.VariableAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*-1" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_4">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddNegX1" event="MouseUp" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="ebCmdMoveAddNegX5">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddNegX5" event="MouseDown" />
+      <Operand datatype="ANY_REAL" name="dist">
+        <ReadTarget xsi:type="session.VariableAction.Read" refId="distValue">
+          <Method xsi:type="session.VariableAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*-5" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_3">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddNegX5" event="MouseUp" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="ebCmdMoveAddNegX10">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddNegX10" event="MouseDown" />
+      <Operand datatype="ANY_REAL" name="dist">
+        <ReadTarget xsi:type="session.VariableAction.Read" refId="distValue">
+          <Method xsi:type="session.VariableAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*-10" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_2">
+      <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddNegX10" event="MouseUp" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
   </Bindings>
 </EventBindingSet>

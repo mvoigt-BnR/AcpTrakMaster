@@ -61,5 +61,12 @@
 <Source xsi:type="opcUa" refId="::Program:ShControl.ShInfo.CurrentValues.SectorName" attribute="value" />
 <Target xsi:type="brease" contentRefId="cntHome" widgetRefId="toCurrentSector" attribute="value" />
 </Binding>
+
+<Binding mode="twoWay">
+<Source xsi:type="session" refId="distValue" attribute="value" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="niCmdDistance" attribute="value" />
+</Binding>
+
+
 </Bindings>
 </BindingsSet>

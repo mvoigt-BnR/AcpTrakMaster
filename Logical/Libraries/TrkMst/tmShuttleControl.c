@@ -113,8 +113,19 @@ void tmShuttleControl(struct tmShuttleControl* inst)
 			
 						inst->Internal.State = tmSH_CONTROL_EL_MOVE_ABS;
 					}
+					else if(inst->ElasticMoveAdd){
+						//Setup the elastic move additve block and execute it
+						inst->Internal.Fbs.ElMoveAdd.Axis = &inst->Internal.CurrentAxis;
+						inst->Internal.Fbs.ElMoveAdd.Distance = inst->Parameters->Distance;
+						inst->Internal.Fbs.ElMoveAdd.Velocity = inst->Parameters->Vel;
+						inst->Internal.Fbs.ElMoveAdd.Acceleration = inst->Parameters->Accel;
+						inst->Internal.Fbs.ElMoveAdd.Deceleration = inst->Parameters->Decel;
+						
+						inst->Internal.Fbs.ElMoveAdd.Execute = TRUE;
+						
+						inst->Internal.State = tmSH_CONTROL_EL_MOVE_ADD;
+					}//End of commands check conditionals
 				}
-			
 			}
 			else{//We've received an invalid selection, need to reset the flags and Sh Status
 				inst->Valid = FALSE;
@@ -123,9 +134,9 @@ void tmShuttleControl(struct tmShuttleControl* inst)
 				inst->Internal.State = tmSH_CONTROL_INIT;
 			}
 			
-			
 			break;
 		case tmSH_CONTROL_EL_MOVE_ABS:
+			//******************************************************************************** Elastic Move absolute state
 			if(inst->Internal.Fbs.ElMoveAbs.Error){
 				inst->Error = TRUE;
 				inst->ErrorID = tmSH_CONTROL_ERR_EL_MOVE;
@@ -143,20 +154,44 @@ void tmShuttleControl(struct tmShuttleControl* inst)
 				inst->Internal.State = tmSH_CONTROL_MOVE_DONE;
 			}
 			break;
+		case tmSH_CONTROL_EL_MOVE_ADD:
+			//******************************************************************************** Elastic Move Additive state
+			if(inst->Internal.Fbs.ElMoveAdd.Error){
+				inst->Error = TRUE;
+				inst->ErrorID = tmSH_CONTROL_ERR_EL_MOVE;
+				
+				inst->Internal.State = tmSH_CONTROL_ERROR;
+			}
+			else if(inst->Internal.Fbs.ElMoveAdd.Done){
+				inst->MovementActive = FALSE;
+				inst->MovementDone = TRUE;
+				
+				inst->Internal.Fbs.ElMoveAdd.Execute = FALSE;
+				
+				inst->Internal.State = tmSH_CONTROL_MOVE_DONE;
+			}
+			else{
+				inst->MovementActive = TRUE;
+			}
+			break;
 		case tmSH_CONTROL_MOVE_DONE:
-			if(!inst->ElasticMoveAbs){
+			//******************************************************************************** Movement Done State
+			if(!inst->ElasticMoveAbs
+				&& !inst->ElasticMoveAdd){
 				inst->MovementDone = FALSE;
 				
 				inst->Internal.State = tmSH_CONTROL_IDLE;
 			}
+			break;
 		case tmSH_CONTROL_ERROR:
+			//******************************************************************************** Error State
 			if(!inst->Enable){
 				inst->Error = FALSE;
 				inst->ErrorID = tmSH_CONTROL_ERR_OK;
 				
 				inst->Internal.Fbs.ElMoveAbs.Execute = FALSE;
 				inst->Internal.Fbs.ElMoveAdd.Execute = FALSE;
-				inst->Internal.Fbs.ShGetInfo.Execute = FALSE;
+				inst->Internal.Fbs.ShGetInfo.Enable = FALSE;
 				
 				inst->Internal.Idx = 0;
 				inst->Internal.LastIdx = 0;
@@ -169,5 +204,6 @@ void tmShuttleControl(struct tmShuttleControl* inst)
 	
 	MC_BR_ShReadInfo_AcpTrak(&inst->Internal.Fbs.ShGetInfo);
 	MC_BR_ElasticMoveAbs_AcpTrak(&inst->Internal.Fbs.ElMoveAbs);
+	MC_BR_ElasticMoveAdd_AcpTrak(&inst->Internal.Fbs.ElMoveAdd);
 }
 

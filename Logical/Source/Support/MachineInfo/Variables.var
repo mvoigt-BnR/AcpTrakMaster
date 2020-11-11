@@ -1,4 +1,4 @@
 VAR
-	MachineSoftwareVersion : STRING[80] := '* master-0.0.1-6-0037c8d';
-	MachineLastRevisionDate : DATE_AND_TIME := DT#2020-11-11-13:54;
+	MachineSoftwareVersion : STRING[80] := '* master-0.0.1-8-55f2ba9';
+	MachineLastRevisionDate : DATE_AND_TIME := DT#2020-11-11-16:27;
 END_VAR

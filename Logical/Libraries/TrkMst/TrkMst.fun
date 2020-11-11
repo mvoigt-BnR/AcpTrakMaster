@@ -27,6 +27,7 @@ FUNCTION_BLOCK tmShuttleControl (*Shuttle Control Function Block*)
 		Handle : UDINT; (*Handle of the Core Track Master Function Block*)
 		SelectedElem : STRING[80]; (*Selected Element String that is populated from a Paper Widget*)
 		ElasticMoveAbs : BOOL; (*Command to send shuttle on Elastic Move Absolute*)
+		ElasticMoveAdd : BOOL; (*Command to send shuttle on Elastic Move Additive*)
 		Parameters : REFERENCE TO tmShuttleControlParsTyp; (*Parameters for movement commands*)
 	END_VAR
 	VAR_OUTPUT
