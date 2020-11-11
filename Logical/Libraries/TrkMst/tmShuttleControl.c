@@ -150,7 +150,19 @@ void tmShuttleControl(struct tmShuttleControl* inst)
 				inst->Internal.State = tmSH_CONTROL_IDLE;
 			}
 		case tmSH_CONTROL_ERROR:
-			
+			if(!inst->Enable){
+				inst->Error = FALSE;
+				inst->ErrorID = tmSH_CONTROL_ERR_OK;
+				
+				inst->Internal.Fbs.ElMoveAbs.Execute = FALSE;
+				inst->Internal.Fbs.ElMoveAdd.Execute = FALSE;
+				inst->Internal.Fbs.ShGetInfo.Execute = FALSE;
+				
+				inst->Internal.Idx = 0;
+				inst->Internal.LastIdx = 0;
+				
+				inst->Internal.State = tmSH_CONTROL_OFF;
+			}
 			break;
 	}
 	//FB calls
