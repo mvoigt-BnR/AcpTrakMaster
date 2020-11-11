@@ -1,8 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="cntHome" height="900" width="1450" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
-    <Widget xsi:type="widgets.brease.Paper" id="Paper1" top="20" left="200" width="1260" height="860" zIndex="0" svgFilePath="Media/gMcAssembly01.svg" transitionTime="100" />
-    <Widget xsi:type="widgets.brease.TextInput" id="TextInput1" top="40" left="0" width="140" height="240" zIndex="1" />
-    <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput1" top="360" left="0" width="200" height="520" zIndex="2" multiLine="true" wordWrap="true" textAlign="left top" />
+    <Widget xsi:type="widgets.brease.Paper" id="Paper1" top="20" left="200" width="1260" height="620" zIndex="0" svgFilePath="Media/gMcAssembly01.svg" transitionTime="100" />
+    <Widget xsi:type="widgets.brease.FlyOut" id="FlyOut1" top="600" left="0" width="1400" height="300" zIndex="1" buttonOffset="90" docking="right" text="Svg Strings">
+      <Widgets>
+        <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput1" top="19" left="240" width="1120" height="261" zIndex="0" multiLine="true" wordWrap="true" textAlign="left top" />
+        <Widget xsi:type="widgets.brease.TextInput" id="TextInput1" top="20" left="20" width="140" height="240" zIndex="1" />
+      </Widgets>
+    </Widget>
+    <Widget xsi:type="widgets.brease.GroupBox" id="gbSelectedShuttle" top="650" left="40" width="920" height="240" zIndex="2">
+      <Widgets>
+        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="mpbElasticMoveAbs" top="88" left="18" width="121" zIndex="0" text="Elastic Move Abs" />
+        <Widget xsi:type="widgets.brease.Label" id="lblCommands" top="28" left="108" width="92" zIndex="1" text="Commands:" />
+        <Widget xsi:type="widgets.brease.Label" id="lblDestinationPosition" top="58" left="178" width="84" height="17" zIndex="2" text="Position:" />
+        <Widget xsi:type="widgets.brease.Label" id="lblCmdVelocity" top="58" left="288" width="84" height="17" zIndex="3" text="Velocity:" />
+        <Widget xsi:type="widgets.brease.Label" id="lblCmdAccel" top="108" left="178" width="84" height="17" zIndex="4" text="Accel:" />
+        <Widget xsi:type="widgets.brease.Label" id="lblCmdDecel" top="108" left="288" width="84" height="17" zIndex="5" text="Decel:" />
+        <Widget xsi:type="widgets.brease.TextInput" id="tiDistance" top="188" left="148" zIndex="6" />
+        <Widget xsi:type="widgets.brease.Label" id="lblDistance" top="168" left="158" width="84" height="17" zIndex="7" text="Distance:" />
+        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="mpbAddPosX1" top="188" left="258" width="33" zIndex="8" text="x1" padding="0px 5px" />
+        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="mpbAddPosX10" top="188" left="338" width="33" zIndex="9" text="x10" padding="0px 5px" />
+        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="mpbAddPosX5" top="188" left="298" width="33" zIndex="10" text="x5" padding="0px 5px" />
+        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="mpbAddNegX10" top="188" left="28" width="33" zIndex="11" text="x10" padding="0px 5px" />
+        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="mpbAddNegX1" top="188" left="108" width="33" zIndex="12" text="x1" padding="0px 5px" />
+        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="mpbAddNegX5" top="188" left="68" width="33" zIndex="13" text="x5" padding="0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="lblStatus" top="28" left="598" width="92" zIndex="14" text="Status:" />
+        <Widget xsi:type="widgets.brease.Label" id="lblCurrentPosition" top="68" left="448" width="62" height="18" zIndex="15" text="Position:" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="lblCurrentSector" top="104" left="452" width="58" height="18" zIndex="16" text="Sector:" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="lblSectorType" top="128" left="424" width="86" height="18" zIndex="17" text="Sector Type:" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="lblOrientation" top="104" left="684" width="76" height="18" zIndex="18" text="Orientation:" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="lblCurrentVelocity" top="68" left="628" width="63" height="18" zIndex="19" text="Velocity:" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="lblMovementInfoType" top="178" left="608" width="72" height="18" zIndex="20" text="Type:" />
+        <Widget xsi:type="widgets.brease.Label" id="lblMovementInfoReason" top="208" left="588" width="72" height="18" zIndex="21" text="Reason:" />
+        <Widget xsi:type="widgets.brease.Label" id="lblMovementInfo" top="188" left="438" width="122" height="18" zIndex="22" text="Movement Info:" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="noCurrentPosition" top="62" left="508" zIndex="23" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="noCurrentVelocity" top="62" left="698" zIndex="24" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="toCurrentSector" top="98" left="508" width="122" zIndex="25" value="secMain" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="toSectorType" top="122" left="508" width="242" zIndex="26" value="mcACPTRAK_SEC_USER_DEFINED" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="toSectorType1" top="98" left="758" width="132" zIndex="27" value="mcDIR_POSITIVE" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="toSectorType2" top="172" left="667" width="242" zIndex="28" value="mcACPTRAK_MANEUVER_NONE" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="toSectorType3" top="202" left="668" width="132" zIndex="29" value="mcDIR_POSITIVE" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.NumericInput" id="niCmdPosition" top="78" left="168" zIndex="30" />
+        <Widget xsi:type="widgets.brease.NumericInput" id="niCmdVelocity" top="78" left="288" zIndex="31" />
+        <Widget xsi:type="widgets.brease.NumericInput" id="niCmdAccel" top="128" left="168" zIndex="32" />
+        <Widget xsi:type="widgets.brease.NumericInput" id="niCmdDecel" top="128" left="288" zIndex="33" />
+        <Widget xsi:type="widgets.brease.Label" id="lblShId" top="-1" left="378" width="92" zIndex="34" text="#ID1" fontSize="16px" bold="true" />
+      </Widgets>
+    </Widget>
   </Widgets>
 </Content>

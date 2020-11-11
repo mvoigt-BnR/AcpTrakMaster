@@ -21,5 +21,45 @@
 <Source xsi:type="opcUa" refId="::Program:TrackMasterCore.SvgTransform" attribute="value" samplingRate="fast" />
 <Target xsi:type="brease" contentRefId="cntHome" widgetRefId="Paper1" attribute="transform" />
 </Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Program:ShControl.Valid" attribute="value" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="gbSelectedShuttle" attribute="enable" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="brease" contentRefId="cntHome" widgetRefId="gbSelectedShuttle" attribute="enable" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="gbSelectedShuttle" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Program:shPars.Position" attribute="node" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="niCmdPosition" attribute="node" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Program:ShControl.ElasticMoveAbs" attribute="value" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="mpbElasticMoveAbs" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Program:shPars.Vel" attribute="node" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="niCmdVelocity" attribute="node" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Program:shPars.Accel" attribute="node" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="niCmdAccel" attribute="node" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Program:shPars.Decel" attribute="node" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="niCmdDecel" attribute="node" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Program:ShControl.ShInfo.CurrentValues.Position" attribute="node" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="noCurrentPosition" attribute="node" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Program:ShControl.ShInfo.CurrentValues.Velocity" attribute="node" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="noCurrentVelocity" attribute="node" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Program:ShControl.ShInfo.CurrentValues.SectorName" attribute="value" />
+<Target xsi:type="brease" contentRefId="cntHome" widgetRefId="toCurrentSector" attribute="value" />
+</Binding>
 </Bindings>
 </BindingsSet>

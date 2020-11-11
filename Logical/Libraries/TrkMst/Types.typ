@@ -22,7 +22,8 @@ TYPE
 		(
 		tmCORE_ERR_OK := 0,
 		tmCORE_ERR_INVALID_ASSEMBLY := -61000,
-		tmCORE_ERR_SH_COUNT_EXCEEDED
+		tmCORE_ERR_SH_COUNT_EXCEEDED := -61001,
+		tmCORE_ERR_STR_LEN_EXCEEDED := -61002 (*The built string is too long, need to increase the maximum size to prevent page faulting*)
 		);
 	tmCoreSvgLengthsTyp : 	STRUCT 
 		ContentLength : UDINT;
@@ -52,6 +53,7 @@ TYPE
 		CurrentAxis : McAxisType;
 		Fbs : tmShuttleControlFbTyp;
 		Idx : USINT;
+		LastIdx : USINT;
 	END_STRUCT;
 	tmShuttleControlFbTyp : 	STRUCT 
 		ShGetInfo : MC_BR_ShReadInfo_AcpTrak;

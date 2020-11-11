@@ -4,4 +4,6 @@ VAR
 	TrackMasterCore : tmCore;
 	ShControl : tmShuttleControl;
 	shPars : tmShuttleControlParsTyp;
+	state : USINT;
+	start : BOOL;
 END_VAR

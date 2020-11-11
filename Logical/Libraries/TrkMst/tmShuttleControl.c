@@ -2,7 +2,7 @@
 #include <bur/plctypes.h>
 
 #define TRUE 1
-#define FALSE 1
+#define FALSE 0
 
 #ifdef __cplusplus
 	extern "C"
@@ -33,6 +33,9 @@ USINT GetIndex(char* selectedElem){
 /* Function block for handling a shuttle control provided from the paper element's selected element ID. Must be paired with the tmCore FB */
 void tmShuttleControl(struct tmShuttleControl* inst)
 {
+	if(inst->Valid){
+		inst->ShInfo = inst->Internal.Fbs.ShGetInfo.ShuttleInfo;
+	}
 	switch (inst->Internal.State){
 		case tmSH_CONTROL_OFF:
 			//******************************************************************************** Off state
@@ -85,19 +88,41 @@ void tmShuttleControl(struct tmShuttleControl* inst)
 		case tmSH_CONTROL_IDLE:
 			//******************************************************************************** Get Shuttle state
 			//Need to check for if the selected element has changed
-			inst->ShInfo = inst->Internal.Fbs.ShGetInfo.ShuttleInfo;
-			if(inst->ElasticMoveAbs){
-				//Setup the elastic move absolute block and execute it
-				inst->Internal.Fbs.ElMoveAbs.Axis = &inst->Internal.CurrentAxis;
-				inst->Internal.Fbs.ElMoveAbs.Position = inst->Parameters->Position;
-				inst->Internal.Fbs.ElMoveAbs.Velocity = inst->Parameters->Vel;
-				inst->Internal.Fbs.ElMoveAbs.Acceleration = inst->Parameters->Accel;
-				inst->Internal.Fbs.ElMoveAbs.Deceleration = inst->Parameters->Decel;
-				
-				inst->Internal.Fbs.ElMoveAbs.Execute = TRUE;
+			inst->Internal.LastIdx = inst->Internal.Idx;
+			if(CheckValidity(&inst->SelectedElem)){
+				inst->Internal.Idx = GetIndex(&inst->SelectedElem);
 			
-				inst->Internal.State = tmSH_CONTROL_EL_MOVE_ABS;
+				if(inst->Internal.Idx != inst->Internal.LastIdx){
+					//We've changed indecies need to head back to init to reset the sh status
+					inst->Valid = FALSE;
+					inst->Internal.Fbs.ShGetInfo.Enable = FALSE;
+			
+					inst->Internal.State = tmSH_CONTROL_INIT;
+				}
+				else{
+					//Here we can start parsing commands
+					if(inst->ElasticMoveAbs){
+						//Setup the elastic move absolute block and execute it
+						inst->Internal.Fbs.ElMoveAbs.Axis = &inst->Internal.CurrentAxis;
+						inst->Internal.Fbs.ElMoveAbs.Position = inst->Parameters->Position;
+						inst->Internal.Fbs.ElMoveAbs.Velocity = inst->Parameters->Vel;
+						inst->Internal.Fbs.ElMoveAbs.Acceleration = inst->Parameters->Accel;
+						inst->Internal.Fbs.ElMoveAbs.Deceleration = inst->Parameters->Decel;
+				
+						inst->Internal.Fbs.ElMoveAbs.Execute = TRUE;
+			
+						inst->Internal.State = tmSH_CONTROL_EL_MOVE_ABS;
+					}
+				}
+			
 			}
+			else{//We've received an invalid selection, need to reset the flags and Sh Status
+				inst->Valid = FALSE;
+				inst->Internal.Fbs.ShGetInfo.Enable = FALSE;
+			
+				inst->Internal.State = tmSH_CONTROL_INIT;
+			}
+			
 			
 			break;
 		case tmSH_CONTROL_EL_MOVE_ABS:

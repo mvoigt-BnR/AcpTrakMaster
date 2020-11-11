@@ -2,7 +2,7 @@
 #include <bur/plctypes.h>
 
 #define TRUE 1
-#define FALSE 1
+#define FALSE 0
 
 #ifdef __cplusplus
 	extern "C"
@@ -12,14 +12,28 @@
 #ifdef __cplusplus
 	};
 #endif
+//Verify that the two string lengths do not exceed a length
+plcbit CheckStrLen(char* dest,char* source,UDINT length){
+	if(brdkStrLen(dest) + brdkStrLen(source) >= length){
+		return FALSE;
+	}
+	else{
+		return TRUE;
+	}
+}
+//This function loops through the assembly monitor data and builds a SVG string + SVG Transform. Will return 0 if succesful
+//Will monitor to make sure the string lengths are not exceeded
 DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* svgTransform){
 	USINT i;
+	USINT transCounter;
+	transCounter = 0;
+	
 	brsmemset(svgContent,0,sizeof(svgContent));
 	brsmemset(svgTransform,0,sizeof(svgTransform));
 	
 	brsstrcat(svgContent,&"<svg viewBox=\"-3.37558 -0.745 4.11115 0.86\">");
+	brsstrcat(svgTransform,&"[");
 	for (i = 0; i < tmMAX_SHUTTLE_COUNT; i++){
-		//TODO: Check for strcat length's to ensure no page faulting!
 		if(mon->Shuttle[i].Available){
 			char tmp[150];
 		
@@ -29,7 +43,12 @@ DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* sv
 			length = (mon->Shuttle[i].ExtentToBack + mon->Shuttle[i].ExtentToFront)/ 1000.0;
 	
 			snprintf2(tmp,150,"<g id=\"Shuttle%d\">",mon->Shuttle[i].Index);
-			brsstrcat(svgContent,&tmp);
+			if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
+				brsstrcat(svgContent,&tmp);
+			}
+			else 
+				return tmCORE_ERR_STR_LEN_EXCEEDED;
+			
 	
 			snprintf2(tmp,150,"<polygon id=\"box\" x=\"%f\" y=\"%f\" points=\"0,0 %0f,0 , %f,%f %f,%f 0,%f\" style=\"fill:rgb(0,255,0);\"/>",
 				-mon->Shuttle[i].ExtentToBack / 1000.0,
@@ -40,33 +59,77 @@ DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* sv
 				(length-width/2.0),
 				width,
 				width);
-			brsstrcat(svgContent,&tmp);	
+			if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
+				brsstrcat(svgContent,&tmp);
+			}
+			else 
+				return tmCORE_ERR_STR_LEN_EXCEEDED;
 	
 			snprintf2(tmp,150,"<text x=\"%f\" y=\"%f\" font-weight=\"bold\" font-size=\"0.035px\">%d</text>",
 				length * 0,
 				width * 3.0 / 4.0,
 				mon->Shuttle[i].Index);
-			brsstrcat(svgContent,&tmp);
+			if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
+				brsstrcat(svgContent,&tmp);
+			}
+			else 
+				return tmCORE_ERR_STR_LEN_EXCEEDED;
 	
+			
 			//Create an invisible bounding rectangle to handle the click event. "Invisible" by using the alpha channel, if you use the 
 			//Vibisility property, the click event will not fire for the SVG
 			snprintf2(tmp,150,"<rect id=\"ID%d\" width=\".05\" height=\"0.05\" style=\"fill:rgba(0,0,255,0)\"/>",
 				mon->Shuttle[i].Index,
 				length ,
 				width);
-			brsstrcat(svgContent,&tmp);
-			brsstrcat(svgContent,&"</g>");
+			if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
+				brsstrcat(svgContent,&tmp);
+			}
+			else 
+				return tmCORE_ERR_STR_LEN_EXCEEDED;
+			
+			
+			if(CheckStrLen(svgContent,&"</g>",tmCORE_MAX_STR_LEN)){
+				brsstrcat(svgContent,&"</g>");
+			}
+			else 
+				return tmCORE_ERR_STR_LEN_EXCEEDED;
 		
-		
-			snprintf2(tmp,150,"[{\"select\":\"#Shuttle%d\",\"duration\":100,\"display\":true,\"translate\":[%f,%f]}]",
+			
+			//Check to see if we've had more transforms to add a comma between the units
+			if(transCounter>0){
+				if(CheckStrLen(svgTransform,&",",tmCORE_MAX_STR_LEN)){
+					brsstrcat(svgTransform,&",");
+				}
+				else 
+					return tmCORE_ERR_STR_LEN_EXCEEDED;	
+			}
+			snprintf2(tmp,150,"{\"select\":\"#Shuttle%d\",\"duration\":100,\"display\":true,\"translate\":[%f,%f]}",
 				mon->Shuttle[i].Index,
 				mon->Shuttle[i].Position.X / 1000.0 - mon->Shuttle[i].ExtentToBack / 1000.0,
 				-mon->Shuttle[i].Position.Y / 1000.0 - mon->Shuttle[i].Width / 2000.0);
-			brsstrcat(svgTransform,&tmp);
+			if(CheckStrLen(svgTransform,&tmp,tmCORE_MAX_STR_LEN)){
+				brsstrcat(svgTransform,&tmp);
+			}
+			else 
+				return tmCORE_ERR_STR_LEN_EXCEEDED;
+			transCounter++;
 		}
+		
 	}
-	brsstrcat(svgContent,&"</svg>");
-	return 0;
+	if(CheckStrLen(svgContent,&"</svg>",tmCORE_MAX_STR_LEN)){
+		brsstrcat(svgContent,&"</svg>");
+	}
+	else 
+		return tmCORE_ERR_STR_LEN_EXCEEDED;
+	if(CheckStrLen(svgTransform,&"]",tmCORE_MAX_STR_LEN)){
+		brsstrcat(svgTransform,&"]");
+	}
+	else 
+		return tmCORE_ERR_STR_LEN_EXCEEDED;
+	
+	//No Error, finished everything return OK
+	return tmCORE_ERR_OK;
 }
 
 /* Core Track Master function blocks. Handles the building of the SVG string */
@@ -133,7 +196,15 @@ void tmCore(struct tmCore* inst)
 			inst->Internal.State = tmCORE_GET_SH;
 			break;
 		case tmCORE_RUNNING:
-			BuildStrings(inst->ShuttleMon,&inst->SvgContent,&inst->SvgTransform);
+			inst->ErrorID = BuildStrings(inst->ShuttleMon,&inst->SvgContent,&inst->SvgTransform);
+			inst->StrLengths.ContentLength = brdkStrLen(&inst->SvgContent);
+			inst->StrLengths.TransformLength = brdkStrLen(&inst->SvgTransform);
+			
+			if(inst->ErrorID != tmCORE_ERR_OK){
+				inst->Error = TRUE;
+				
+				inst->Internal.State = tmCORE_ERROR;
+			}
 			break;
 		case tmCORE_RESET:
         	//Try and recover by resetting any blocks

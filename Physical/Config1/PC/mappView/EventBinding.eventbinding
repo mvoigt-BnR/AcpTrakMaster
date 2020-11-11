@@ -4,11 +4,22 @@
     <EventBinding id="EventBinding_1">
       <Source xsi:type="widgets.brease.Paper.Event" contentRefId="cntHome" widgetRefId="Paper1" event="Click" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:selectedId">
-            <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Program:selectedId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.Label.Action" contentRefId="cntHome" widgetRefId="lblShId">
+                <Method xsi:type="widgets.brease.Label.Action.SetText" text="=elementId" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
   </Bindings>

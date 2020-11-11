@@ -26,21 +26,27 @@ void _CYCLIC ProgramCyclic(void)
 			}
 			break;
 		case 20:
-			if(secAddShuttle.Busy){
+			if(secAddShuttle.Done){
 				secAddShuttle.Execute = 0;
-			
-				axis = secAddShuttle.Axis;
 				
-				routedMoveVel.Axis = &axis;
-				routedMoveVel.Velocity = 1;
-				routedMoveVel.Acceleration = 10;
-				routedMoveVel.Deceleration = 10;
-				routedMoveVel.Sector = &secMain;
-				routedMoveVel.Position = 0;
-				routedMoveVel.Execute = SendCmd;
-			
-				state = 30;
+				if(count < 1){
+					state = 21;
+					secAddShuttle.Position = 0.5;
+					count++;
+				}
+				else{
+					state = 30;
+				}
 			}
+			break;
+		case 21:
+			secAddShuttle.Execute = 1;
+			state = 20;
+			break;
+		case 30:
+			
+			
+			break;
 	}
 	MC_BR_AsmPowerOn_AcpTrak(&asmPowerOn);
 	MC_BR_SecAddShuttle_AcpTrak(&secAddShuttle);

@@ -7,4 +7,5 @@ VAR
 	secGetShuttle : MC_BR_SecGetShuttle_AcpTrak;
 	start : BOOL;
 	SendCmd : BOOL;
+	count : USINT;
 END_VAR
