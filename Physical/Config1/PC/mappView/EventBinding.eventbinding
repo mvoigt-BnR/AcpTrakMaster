@@ -7,7 +7,7 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Program:selectedId">
+              <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:selectedId">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
@@ -31,14 +31,14 @@
       </Operand>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:shPars.Distance">
             <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*1" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -48,7 +48,7 @@
       <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddPosX1" event="MouseUp" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
           </Target>
         </Action>
@@ -63,14 +63,14 @@
       </Operand>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:shPars.Distance">
             <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*5" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -80,7 +80,7 @@
       <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddPosX5" event="MouseUp" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
           </Target>
         </Action>
@@ -95,14 +95,14 @@
       </Operand>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:shPars.Distance">
             <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*10" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -112,7 +112,7 @@
       <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddPosX10" event="MouseUp" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
           </Target>
         </Action>
@@ -127,14 +127,14 @@
       </Operand>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:shPars.Distance">
             <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*-1" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -144,7 +144,7 @@
       <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddNegX1" event="MouseUp" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
           </Target>
         </Action>
@@ -159,14 +159,14 @@
       </Operand>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:shPars.Distance">
             <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*-5" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -176,7 +176,7 @@
       <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddNegX5" event="MouseUp" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
           </Target>
         </Action>
@@ -191,14 +191,14 @@
       </Operand>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:shPars.Distance">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:shPars.Distance">
             <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=dist*-10" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -208,7 +208,7 @@
       <Source xsi:type="widgets.brease.MomentaryPushButton.Event" contentRefId="cntHome" widgetRefId="mpbAddNegX10" event="MouseUp" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Program:ShControl.ElasticMoveAdd">
+          <Target xsi:type="opcUa.NodeAction" refId="::TrackMaste:ShControl.ElasticMoveAdd">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
           </Target>
         </Action>

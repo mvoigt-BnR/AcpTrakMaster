@@ -28,11 +28,10 @@ void _CYCLIC ProgramCyclic(void)
 		case 20:
 			if(secAddShuttle.Done){
 				secAddShuttle.Execute = 0;
-				
-				if(count < 1){
+				count++;
+				if(count < maxShuttle){
 					state = 21;
-					secAddShuttle.Position = 0.5;
-					count++;
+					secAddShuttle.Position = 0.1 * count;
 				}
 				else{
 					state = 30;

@@ -8,4 +8,5 @@ VAR
 	start : BOOL;
 	SendCmd : BOOL;
 	count : USINT;
+	maxShuttle : USINT;
 END_VAR

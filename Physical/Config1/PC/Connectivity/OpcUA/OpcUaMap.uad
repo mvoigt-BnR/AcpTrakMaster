@@ -8,17 +8,14 @@
   </Aliases>
   <DefaultView>
     <Module Name="&lt;Default&gt;">
-      <Task Name="Program">
-        <Variable Name="selectedId" />
-        <Variable Name="TrackMasterCore">
-          <Variable Name="SvgContent" />
-          <Variable Name="SvgTransform" />
-        </Variable>
-        <Variable Name="ShControl" AutomaticEnable="True" />
-        <Variable Name="shPars" AutomaticEnable="True" />
-      </Task>
       <Task Name="TrakMain">
         <Variable Name="start" />
+      </Task>
+      <Task Name="TrackMaste">
+        <Variable Name="selectedId" />
+        <Variable Name="ShControl" AutomaticEnable="True" />
+        <Variable Name="shPars" AutomaticEnable="True" />
+        <Variable Name="TrackMasterCore" AutomaticEnable="True" />
       </Task>
     </Module>
   </DefaultView>
