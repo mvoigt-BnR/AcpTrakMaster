@@ -51,6 +51,8 @@ Built on
 
 It is possible and likely this system will work on other versions.
 
+**Core FB and all associated should be called in low priority task classes with high tolerances.**
+
 ### To Extend
 
 Coming soon?
