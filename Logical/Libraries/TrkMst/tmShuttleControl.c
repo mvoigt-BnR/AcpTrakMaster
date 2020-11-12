@@ -145,6 +145,20 @@ void tmShuttleControl(struct tmShuttleControl* inst)
 			}
 			else if(inst->Internal.Fbs.ElMoveAbs.Active){
 				inst->MovementActive = TRUE;
+				inst->Internal.Fbs.ElMoveAbs.Execute = FALSE;
+				
+				inst->Internal.LastIdx = inst->Internal.Idx;
+				if(CheckValidity(&inst->SelectedElem)){
+					inst->Internal.Idx = GetIndex(&inst->SelectedElem);
+					
+					if(inst->Internal.Idx != inst->Internal.LastIdx){
+						//We've changed indecies need to head back to init to reset the sh status
+						inst->Valid = FALSE;
+						inst->Internal.Fbs.ShGetInfo.Enable = FALSE;
+			
+						inst->Internal.State = tmSH_CONTROL_INIT;
+					}
+				}
 			}
 			else if(inst->Internal.Fbs.ElMoveAbs.Done){
 				inst->Internal.Fbs.ElMoveAbs.Execute = FALSE;
