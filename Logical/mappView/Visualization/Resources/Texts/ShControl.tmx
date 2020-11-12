@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tmx version="1.4">
+  <header creationtool="B&amp;R Automation Studio" creationtoolversion="4.2" datatype="unknown" segtype="sentence" adminlang="en" srclang="en" o-tmf="TMX">
+    <note>Change the namespace to define where this text module should be located within the logical structure of your texts</note>
+    <prop type="x-BR-TS:Namespace">IAT/ShControl</prop>
+  </header>
+  <body>
+    <tu tuid="ManeuverType.0">
+      <tuv xml:lang="fr">
+        <seg>Bonjour tout le monde!</seg>
+      </tuv>
+      <tuv xml:lang="de">
+        <seg>Servus Welt!</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_MANEUVER_NONE</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ManeuverType.1">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_MANEUVER_ADJUSTMENT</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ManeuverType.2">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_MANEUVER_STANDSTILL</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ManeuverType.3">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_MANEUVER_EMERGENCY</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.0">
+      <tuv xml:lang="fr">
+        <seg>Bonjour tout le monde!</seg>
+      </tuv>
+      <tuv xml:lang="de">
+        <seg>Servus Welt!</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_UNSPECIFIED</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.1">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_SHUTTLE</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.2">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_LOCAL_VEL_LIMIT</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.3">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_BARRIER</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.4">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_SECTOREND</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.5">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_SECTORSWITCH</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.6">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_LOGISTICS</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.7">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_NONE</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.8">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_LOCAL_ACC_LIMIT</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.9">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_UNCONTROLLED</seg>
+      </tuv>
+    </tu>
+    <tu tuid="ReasonType.10">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_REASON_RECONTROLLED</seg>
+      </tuv>
+    </tu>
+    <tu tuid="SectorType.0">
+      <tuv xml:lang="fr">
+        <seg>Bonjour tout le monde!</seg>
+      </tuv>
+      <tuv xml:lang="de">
+        <seg>Servus Welt!</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_SEC_USER_DEFINED</seg>
+      </tuv>
+    </tu>
+    <tu tuid="SectorType.1">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_SEC_USER_SEGMENT</seg>
+      </tuv>
+    </tu>
+    <tu tuid="SectorType.2">
+      <tuv xml:lang="en">
+        <seg>mcACPTRAK_SEC_INTERNAL</seg>
+      </tuv>
+    </tu>
+    <tu tuid="Orientation.0">
+      <tuv xml:lang="fr">
+        <seg>Bonjour tout le monde!</seg>
+      </tuv>
+      <tuv xml:lang="de">
+        <seg>Servus Welt!</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>mcDIR_POSITIVE</seg>
+      </tuv>
+    </tu>
+    <tu tuid="Orientation.1">
+      <tuv xml:lang="en">
+        <seg>mcDIR_NEGATIVE</seg>
+      </tuv>
+    </tu>
+    <tu tuid="Orientation.9">
+      <tuv xml:lang="en">
+        <seg>mcDIR_UNDEFINED</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

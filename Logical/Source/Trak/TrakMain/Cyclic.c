@@ -44,7 +44,7 @@ void _CYCLIC ProgramCyclic(void)
 			state = 20;
 			break;
 		case 30:
-			
+			gPowered = 1;
 			
 			break;
 	}

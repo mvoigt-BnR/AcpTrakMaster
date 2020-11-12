@@ -20,7 +20,7 @@
     <!--<Content refId="" />-->
   </Contents>
   <SnippetsSets>
-    <!--<SnippetsSet refId=""/>-->
+    <SnippetsSet refId="shControlSnippets"/>
   </SnippetsSets>
   <ExpressionsSets>
     <!--<ExpressionsSet refId=""/>-->

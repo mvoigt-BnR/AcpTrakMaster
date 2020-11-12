@@ -1,3 +1,4 @@
 VAR
 	gShuttleMon : McAcpTrakAssemblyMonData;
+	gPowered : BOOL;
 END_VAR

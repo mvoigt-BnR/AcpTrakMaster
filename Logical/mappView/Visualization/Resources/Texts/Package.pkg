@@ -2,9 +2,6 @@
 <?AutomationStudio Version=4.7.5.60 SP?>
 <Package SubType="TextsPackage" PackageType="TextsPackage" xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
-    <Object Type="File">ManueverType.tmx</Object>
-    <Object Type="File">ManueverReason.tmx</Object>
-    <Object Type="File">SectorType.tmx</Object>
-    <Object Type="File">Orientation.tmx</Object>
+    <Object Type="File">ShControl.tmx</Object>
   </Objects>
 </Package>

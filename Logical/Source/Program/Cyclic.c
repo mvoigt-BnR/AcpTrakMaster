@@ -18,7 +18,7 @@ void _CYCLIC ProgramCyclic(void)
 	
 	switch (state){
 		case 0:
-			if(start){
+			if(start || gPowered){
 				TrackMasterCore.Assembly = &gAssembly_1;
 				TrackMasterCore.ShuttleMon = &gShuttleMon;
 				TrackMasterCore.Enable = 1;
@@ -28,7 +28,7 @@ void _CYCLIC ProgramCyclic(void)
 				TrackMasterCore.ViewBoxCfg.MinY = -0.745;
 				TrackMasterCore.ViewBoxCfg.Width = 4.11115;
 				TrackMasterCore.ViewBoxCfg.Height = 0.86;
-			
+				
 			
 				state = 10;
 			}
