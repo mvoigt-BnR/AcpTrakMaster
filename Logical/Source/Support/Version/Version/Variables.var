@@ -1,5 +1,0 @@
-VAR
-	Version : STRING[255]; (*Revision Number of the commit*)
-	Author : STRING[255]; (*Author of the commit*)
-	Date : STRING[255]; (*Date of the commit*)
-END_VAR

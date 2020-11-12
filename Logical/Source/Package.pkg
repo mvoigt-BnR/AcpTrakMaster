@@ -2,8 +2,7 @@
 <?AutomationStudio Version=4.7.5.60 SP?>
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
-    <Object Type="Package">Support</Object>
-    <Object Type="Program" Language="ANSIC">Program</Object>
+    <Object Type="Program" Language="ANSIC">TrackMaster</Object>
     <Object Type="Package">Trak</Object>
   </Objects>
 </Package>

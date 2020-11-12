@@ -6,15 +6,12 @@
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
-  <TaskClass Name="Cyclic#4">
-    <Task Name="Version" Source="Source.Support.Version.Version.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="MachineInf" Source="Source.Support.MachineInfo.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-  </TaskClass>
+  <TaskClass Name="Cyclic#4" />
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
-    <Task Name="Program" Source="Source.Program.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="TrackMaste" Source="Source.TrackMaster.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <DataObjects>
     <DataObject Name="McAcpSys" Source="" Memory="UserROM" Language="Binary" />
