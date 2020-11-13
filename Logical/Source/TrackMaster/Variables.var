@@ -6,4 +6,5 @@ VAR
 	shPars : tmShuttleControlParsTyp;
 	state : USINT;
 	start : BOOL;
+	coreOptions : tmCoreOptionsTyp;
 END_VAR

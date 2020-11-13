@@ -11,4 +11,9 @@ void _INIT ProgramInit(void)
 	shPars.Accel = 10;
 	shPars.Decel = 10;
 	shPars.Vel = 1;
+	coreOptions.Color.Enabled = 1;
+	coreOptions.Color.Offsets.Red = 0;
+	coreOptions.Color.Offsets.Green = 1;
+	coreOptions.Color.Offsets.Blue = 2;
+	TrackMasterCore.Options = &coreOptions;
 }

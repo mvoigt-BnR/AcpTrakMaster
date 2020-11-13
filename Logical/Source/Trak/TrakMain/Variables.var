@@ -9,4 +9,6 @@ VAR
 	SendCmd : BOOL;
 	count : USINT;
 	maxShuttle : USINT;
+	copyUserData : MC_BR_ShCopyUserData_AcpTrak;
+	userData : UserDataTyp;
 END_VAR

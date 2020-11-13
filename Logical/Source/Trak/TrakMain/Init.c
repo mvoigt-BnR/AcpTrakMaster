@@ -8,4 +8,6 @@
 void _INIT ProgramInit(void)
 {
 	maxShuttle = 1;
+	userData.Red = 255;
+		
 }

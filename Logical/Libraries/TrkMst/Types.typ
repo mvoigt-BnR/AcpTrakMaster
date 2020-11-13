@@ -42,6 +42,18 @@ TYPE
 		Present : BOOL; (*Axis is present and a valid reference exists*)
 		Axis : McAxisType; (*Axis information*)
 	END_STRUCT;
+	tmCoreOptionsTyp : 	STRUCT 
+		Color : tmCoreColorOptionTyp;
+	END_STRUCT;
+	tmCoreColorOptionTyp : 	STRUCT 
+		Enabled : BOOL;
+		Offsets : tmCoreColorOffsetsTyp;
+	END_STRUCT;
+	tmCoreColorOffsetsTyp : 	STRUCT 
+		Red : UDINT;
+		Green : UDINT;
+		Blue : UDINT;
+	END_STRUCT;
 END_TYPE
 
 (*Track Master Shuttle Control Types*)

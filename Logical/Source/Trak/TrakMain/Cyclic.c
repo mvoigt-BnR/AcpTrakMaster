@@ -27,14 +27,23 @@ void _CYCLIC ProgramCyclic(void)
 			break;
 		case 20:
 			if(secAddShuttle.Done){
-				secAddShuttle.Execute = 0;
-				count++;
-				if(count < maxShuttle){
-					state = 21;
-					secAddShuttle.Position = 0.1 * count;
-				}
-				else{
-					state = 30;
+				copyUserData.Axis = &secAddShuttle.Axis;
+				copyUserData.DataAddress = &userData;
+				copyUserData.DataSize = sizeof(userData);
+				copyUserData.Mode = mcACPTRAK_USERDATA_SET;
+				copyUserData.Execute = 1;
+				if(copyUserData.Done){
+					copyUserData.Execute = 0;
+					secAddShuttle.Execute = 0;
+					count++;
+					if(count < maxShuttle){
+						state = 21;
+						secAddShuttle.Position = 0.1 * count;
+					}
+					else{
+						state = 30;
+					}
+					
 				}
 			}
 			break;
@@ -50,5 +59,6 @@ void _CYCLIC ProgramCyclic(void)
 	MC_BR_AsmPowerOn_AcpTrak(&asmPowerOn);
 	MC_BR_SecAddShuttle_AcpTrak(&secAddShuttle);
 	MC_BR_RoutedMoveVel_AcpTrak(&routedMoveVel);
+	MC_BR_ShCopyUserData_AcpTrak(&copyUserData);
      
 }

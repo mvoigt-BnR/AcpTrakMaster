@@ -21,9 +21,58 @@ plcbit CheckStrLen(char* dest,char* source,UDINT length){
 		return TRUE;
 	}
 }
+DINT BuildShuttlePolygon(char* dest,
+		USINT idx, 
+		LREAL length,
+		LREAL width,
+		UDINT userDataAdr,
+		struct tmCoreColorOptionTyp* colorOption){
+	
+	char tmp[150];
+	USINT red,blue,green;
+	struct UserDataTyp* tst;
+	
+	if(!colorOption->Enabled){
+		snprintf2(tmp,150,"<polygon id=\"sh%d\" points=\"0,0 %0f,0 , %f,%f %f,%f 0,%f\" style=\"fill:rgb(0,255,0);\"/>",
+			idx,	//polygon index
+			(length-width/2.0),//p1.x
+			length,	//p1.y
+			width/2.0, //p2.x
+			(length-width/2.0),//p2.y
+			width,//p2.x
+			width); //p3.y
+	}
+	else{
+		brsmemcpy(&red,userDataAdr + colorOption->Offsets.Red,sizeof(USINT));
+		brsmemcpy(&green,userDataAdr + colorOption->Offsets.Green,sizeof(USINT));
+		brsmemcpy(&blue,userDataAdr + colorOption->Offsets.Blue,sizeof(USINT));
+		
+		snprintf2(tmp,150,"<polygon id=\"sh%d\" points=\"0,0 %0f,0 , %f,%f %f,%f 0,%f\" style=\"fill:rgb(%d,%d,%d);\"/>",
+			idx,	//polygon index
+			(length-width/2.0),//p1.x
+			length,	//p1.y
+			width/2.0, //p2.x
+			(length-width/2.0),//p2.y
+			width,//p2.x
+			width,
+			red,
+			green,
+			blue); //p3.y
+	}
+	if(CheckStrLen(dest,&tmp,tmCORE_MAX_STR_LEN)){
+		brsstrcat(dest,&tmp);
+		return tmCORE_ERR_OK;
+	}
+	else 
+		return tmCORE_ERR_STR_LEN_EXCEEDED;
+}
+
 //This function loops through the assembly monitor data and builds a SVG string + SVG Transform. Will return 0 if succesful
 //Will monitor to make sure the string lengths are not exceeded
-DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* svgTransform,struct tmCoreViewBoxCfgTyp* viewBox){
+DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,
+		char* svgContent,char* svgTransform,
+		struct tmCoreViewBoxCfgTyp* viewBox,
+		struct tmCoreOptionsTyp* coreOptions){
 	USINT i;
 	USINT transCounter;
 	transCounter = 0;
@@ -64,21 +113,11 @@ DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* sv
 			else 
 				return tmCORE_ERR_STR_LEN_EXCEEDED;
 			
-	
-			snprintf2(tmp,150,"<polygon id=\"sh%d\" points=\"0,0 %0f,0 , %f,%f %f,%f 0,%f\" style=\"fill:rgb(0,255,0);\"/>",
-				mon->Shuttle[i].Index,	//polygon index
-				(length-width/2.0),//p1.x
-				length,	//p1.y
-				width/2.0, //p2.x
-				(length-width/2.0),//p2.y
-				width,//p2.x
-				width); //p3.y
-			if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
-				brsstrcat(svgContent,&tmp);
-			}
-			else 
-				return tmCORE_ERR_STR_LEN_EXCEEDED;
-	
+			DINT returnVal;
+			returnVal = BuildShuttlePolygon(svgContent,mon->Shuttle[i].Index,length,width,mon->Shuttle[i].UserData,&coreOptions->Color);
+			if(returnVal!= tmCORE_ERR_OK)
+				return returnVal;
+			
 			snprintf2(tmp,150,"<text x=\"%f\" y=\"%f\" font-weight=\"bold\" font-size=\"0.035px\">%d</text>",
 				mon->Shuttle[i].ExtentToBack / 2000.0,
 				width * 3.0 / 4.0,
@@ -225,7 +264,7 @@ void tmCore(struct tmCore* inst)
 			inst->Internal.State = tmCORE_GET_SH;
 			break;
 		case tmCORE_RUNNING:
-			inst->ErrorID = BuildStrings(inst->ShuttleMon,&inst->SvgContent,&inst->SvgTransform,&inst->ViewBoxCfg);
+			inst->ErrorID = BuildStrings(inst->ShuttleMon,&inst->SvgContent,&inst->SvgTransform,&inst->ViewBoxCfg,inst->Options);
 			inst->StrLengths.ContentLength = brdkStrLen(&inst->SvgContent);
 			inst->StrLengths.TransformLength = brdkStrLen(&inst->SvgTransform);
 			
