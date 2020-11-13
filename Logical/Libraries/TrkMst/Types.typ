@@ -42,17 +42,17 @@ TYPE
 		Present : BOOL; (*Axis is present and a valid reference exists*)
 		Axis : McAxisType; (*Axis information*)
 	END_STRUCT;
-	tmCoreOptionsTyp : 	STRUCT 
-		Color : tmCoreColorOptionTyp;
+	tmCoreOptionsTyp : 	STRUCT  (*Options for Core Function Block*)
+		Color : tmCoreColorOptionTyp; (*Shuttle Color Option*)
 	END_STRUCT;
-	tmCoreColorOptionTyp : 	STRUCT 
-		Enabled : BOOL;
-		Offsets : tmCoreColorOffsetsTyp;
+	tmCoreColorOptionTyp : 	STRUCT  (*Shuttle Color Option*)
+		Enabled : BOOL; (*Option is enabled*)
+		Offsets : tmCoreColorOffsetsTyp; (*Userdata color offsets*)
 	END_STRUCT;
-	tmCoreColorOffsetsTyp : 	STRUCT 
-		Red : UDINT;
-		Green : UDINT;
-		Blue : UDINT;
+	tmCoreColorOffsetsTyp : 	STRUCT  (*Userdata color offsets*)
+		Red : UDINT; (*Offset for UserData address for the Red color in USINT*)
+		Green : UDINT; (*Offset for UserData address for the Green color in USINT*)
+		Blue : UDINT; (*Offset for UserData address for the Blue color in USINT*)
 	END_STRUCT;
 END_TYPE
 
