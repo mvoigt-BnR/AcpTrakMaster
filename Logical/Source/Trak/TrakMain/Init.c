@@ -7,5 +7,5 @@
 
 void _INIT ProgramInit(void)
 {
-	maxShuttle = 5;
+	maxShuttle = 1;
 }

@@ -15,7 +15,7 @@
           <Step order="1">
             <Action>
               <Target xsi:type="widgets.brease.Label.Action" contentRefId="cntHome" widgetRefId="lblShId">
-                <Method xsi:type="widgets.brease.Label.Action.SetText" text="=elementId" />
+								<Method xsi:type="widgets.brease.Label.Action.SetText" text="=elementId" />
               </Target>
             </Action>
           </Step>

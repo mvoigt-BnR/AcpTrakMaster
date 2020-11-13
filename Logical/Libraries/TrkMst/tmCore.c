@@ -49,8 +49,13 @@ DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* sv
 		
 			LREAL width;
 			LREAL length;
+			LREAL shCenterX;
+			LREAL shCenterY;
+			
 			width = mon->Shuttle[i].Width / 1000.0;
 			length = (mon->Shuttle[i].ExtentToBack + mon->Shuttle[i].ExtentToFront)/ 1000.0;
+			shCenterX = mon->Shuttle[i].Position.X / 1000.0 - mon->Shuttle[i].ExtentToBack / 1000.0;
+			shCenterY = -(mon->Shuttle[i].Position.Y / 1000.0 + width / 2.0);
 	
 			snprintf2(tmp,150,"<g id=\"Shuttle%d\">",mon->Shuttle[i].Index);
 			if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
@@ -60,15 +65,14 @@ DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* sv
 				return tmCORE_ERR_STR_LEN_EXCEEDED;
 			
 	
-			snprintf2(tmp,150,"<polygon id=\"box\" x=\"%f\" y=\"%f\" points=\"0,0 %0f,0 , %f,%f %f,%f 0,%f\" style=\"fill:rgb(0,255,0);\"/>",
-				-mon->Shuttle[i].ExtentToBack / 1000.0,
-				-width,
-				(length-width/2.0),
-				length,
-				width/2.0,
-				(length-width/2.0),
-				width,
-				width);
+			snprintf2(tmp,150,"<polygon id=\"sh%d\" points=\"0,0 %0f,0 , %f,%f %f,%f 0,%f\" style=\"fill:rgb(0,255,0);\"/>",
+				mon->Shuttle[i].Index,	//polygon index
+				(length-width/2.0),//p1.x
+				length,	//p1.y
+				width/2.0, //p2.x
+				(length-width/2.0),//p2.y
+				width,//p2.x
+				width); //p3.y
 			if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
 				brsstrcat(svgContent,&tmp);
 			}
@@ -76,7 +80,7 @@ DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* sv
 				return tmCORE_ERR_STR_LEN_EXCEEDED;
 	
 			snprintf2(tmp,150,"<text x=\"%f\" y=\"%f\" font-weight=\"bold\" font-size=\"0.035px\">%d</text>",
-				length * 0,
+				mon->Shuttle[i].ExtentToBack / 2000.0,
 				width * 3.0 / 4.0,
 				mon->Shuttle[i].Index);
 			if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
@@ -88,9 +92,9 @@ DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* sv
 			
 			//Create an invisible bounding rectangle to handle the click event. "Invisible" by using the alpha channel, if you use the 
 			//Vibisility property, the click event will not fire for the SVG
-			snprintf2(tmp,150,"<rect id=\"ID%d\" width=\".05\" height=\"0.05\" style=\"fill:rgba(0,0,255,0)\"/>",
+			snprintf2(tmp,150,"<rect id=\"ID%d\" width=\"%f\" height=\"%f\" style=\"fill:rgba(0,0,0,0)\"/>",
 				mon->Shuttle[i].Index,
-				length ,
+				length,
 				width);
 			if(CheckStrLen(svgContent,&tmp,tmCORE_MAX_STR_LEN)){
 				brsstrcat(svgContent,&tmp);
@@ -114,15 +118,30 @@ DINT BuildStrings(struct McAcpTrakAssemblyMonData* mon,char* svgContent,char* sv
 				else 
 					return tmCORE_ERR_STR_LEN_EXCEEDED;	
 			}
-			snprintf2(tmp,150,"{\"select\":\"#Shuttle%d\",\"duration\":100,\"display\":true,\"translate\":[%f,%f]}",
+			//Preform translation
+			snprintf2(tmp,150,"{\"select\":\"#Shuttle%d\",\"duration\":100,\"display\":true,\"translate\":[%f,%f]},",
 				mon->Shuttle[i].Index,
-				mon->Shuttle[i].Position.X / 1000.0 - mon->Shuttle[i].ExtentToBack / 1000.0,
-				-mon->Shuttle[i].Position.Y / 1000.0 - mon->Shuttle[i].Width / 2000.0);
+				shCenterX,
+				shCenterY,
+				-mon->Shuttle[i].Orientation.Angle1,
+				length/2.0,
+				width/2.0);
 			if(CheckStrLen(svgTransform,&tmp,tmCORE_MAX_STR_LEN)){
 				brsstrcat(svgTransform,&tmp);
 			}
 			else 
 				return tmCORE_ERR_STR_LEN_EXCEEDED;
+			//Preform rotation
+			snprintf2(tmp,150,"{\"select\":\"#sh%d\",\"duration\":100,\"display\":true,\"spin\":[%f,%f,%f]}",
+				mon->Shuttle[i].Index,
+				-mon->Shuttle[i].Orientation.Angle1, //Spin amount
+				length/2.0,	//Spin center x
+				width/2.0); //Spin center y
+			if(CheckStrLen(svgTransform,&tmp,tmCORE_MAX_STR_LEN)){
+				brsstrcat(svgTransform,&tmp);
+			}
+			else 
+				return tmCORE_ERR_STR_LEN_EXCEEDED;	
 			transCounter++;
 		}
 		
